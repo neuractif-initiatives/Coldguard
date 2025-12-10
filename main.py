@@ -73,3 +73,16 @@ classes_decoded = label_encoders['risque_deterioration'].inverse_transform(y_pre
 
 
 
+# Créer un DataFrame pour la visualisation
+import pandas as pd
+import plotly.express as px
+
+df_vis = pd.DataFrame({'Risque prédit': classes_decoded})
+
+# Créer un histogramme de la distribution des risques prédits
+fig = px.histogram(df_vis, x='Risque prédit', color='Risque prédit',
+                   title='Distribution des prédictions de risque sur le jeu de test',
+                   labels={'Risque prédit': 'Risque prédit'},
+                   text_auto=True)
+fig.show()
+
